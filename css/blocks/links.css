@@ -1,0 +1,10 @@
+.links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+  
+.social__links {
+    color: var(--bg-secondary-color);
+    font-size: 25px;
+}

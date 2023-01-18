@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script
+      src="https://kit.fontawesome.com/3e2b3d0dcf.js"
+      crossorigin="anonymous"
+    ></script>
+</head>
+<body class="page">
+    <header class="header">
+        <div class="container header__container">
+            <a href="#" class="logo" >
+                <i class="fa-sharp fa-solid fa-shield-cat"></i>Cats
+            </a>
+            <button class="btn" id="add"><i class="fa-duotone fa-plus"></i>New Cat</button>
+        </div> 
+    </header>
+    <main class="main container">
+        <section class="cards">
+          <h2 class="visually-hidden">Cats list</h2>
+      </section>
+      </main>
+    <footer class="footer">
+        <div class="container footer__container">
+            <span class="copyright">©Made by Nikita Z</span>
+            <div class="links">
+                <a href="" class="social_links"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+    <div class="popup popup-add-cats">
+        <div class="popup__container" >
+            <button class="popup__close btn"><i class="fa-solid fa-xmark"></i></button>
+            <h2>Add pet</h2>
+            <form class="form" id="popup-form-cat">
+                <div class="form__image"></div>
+                <input type="number" class="form__input" name="id" min="1" required placeholder="id">
+                <input type="number" class="form__input" name="age" placeholder="Age">
+                <input type="text" class="form__input" name="name" required placeholder="Name">
+                <input type="number" class="form__input" name="rate" placeholder="Rate (0-10)" min="0" max="10">
+                <textarea name="description" class="form__input form__textarea" placeholder="Description"></textarea>
+                <label class="form__checkbox-wrap">
+                    <input type="checkbox" name="favourite" class="form__checkbox " placeholder="">
+                    <span class="form__label">Favourite</span>  
+                    <span class="form__fake-checkbox"><i class="fa-regular fa-circle-check"></i></span>
+                </label>
+                <input type="url" class="form__input form__input_image" name="img_link" placeholder="IMG link">
+                <button type="submit" class="form__btn btn">Add</button>
+            </form>
+        </div>
+    </div>
+    <template id="card-template">
+        <div class="card">
+          <img src="https://skazki.land/api/get-resized-image/kotik-012b2.jpg?width=1024&height=1024&fit=inside" alt="Изображение" class="card__image">
+          <a href="#" class="card__link"><h3 class="card__name">cat</h3></a>
+          <button class="card__like" aria-label="Like"><i class="fa-solid fa-heart fa-2x"></i></button>
+      </div>
+      </template>
+    <script src="./script/cats.js" defer></script>
+    <script src="./script/api.js" defer></script>
+    <script src="./script/card.js" defer></script>
+    <script src="./script/popup.js" defer></script>
+    <script src="./script/index.js" defer></script>
+</body>
+</html>
