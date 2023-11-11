@@ -1,29 +1,47 @@
-class Popup {
-    constructor(className) {
-      this._className = className;
-      this.popup = document.querySelector(`.${className}`);
+export class Popup {
+  constructor(className) {
+    this._className = className;
+    this.popup = document.querySelector(`.${className}`);
+    this._handleEscUp = this._handleEscUp.bind(this);
+  }
+
+  _handleEscUp(evt) {
+    if(evt.key === 'Escape') {
+        this.close()
     }
-    open() {
-      this.popup.classList.add('popup_active');
-    }
-    close() {
-      this.popup.classList.remove('popup_active');
-    }
-    setEventListener() {
-      console.log(this.popup);
-      this.popup.addEventListener('click', (evt) => {
-        console.log(evt.target.classList);
-        console.log(evt.target.closest('.popup__close'));
-        if (
-          evt.target.classList.contains(this._className) ||
-          !!evt.target.closest('.popup__close')
-        ) {
-          this.close();
-        }
-      });
-    }
+  }
+
+  setContent(contentNode) {
+    const containerContent = this.popup.querySelector('.popup__content');
+    containerContent.innerHTML = '';
+    containerContent.append(contentNode)
 }
-  
-const popups = new Popup('popup-add-cats');
-console.log(popups);
-  
+
+  open() {
+    this.popup.classList.add('popup__active');
+    document.addEventListener('keyup', this._handleEscUp)
+  }
+
+  close() {
+    this.popup.classList.remove('popup__active');
+    document.removeEventListener('keyup', this._handleEscUp)
+  }
+
+  setEventListener(){
+    this.popup.addEventListener('click', (evt) => {
+        if(evt.target.classList.contains(this._className) || evt.target.closest('.popup__close')){
+            this.close()
+        }
+    })
+}
+
+}
+export class PopupImage extends Popup {
+
+    open(data) {
+      const imagePopup = this.popup.querySelector('.popup__image');
+      imagePopup.src = data.image;
+      super.open()
+    }
+   
+}

@@ -4,30 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Коробка с котами</title>
     <link rel="stylesheet" href="css/index.css">
     <script
       src="https://kit.fontawesome.com/3e2b3d0dcf.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 </head>
 <body class="page">
     <header class="header">
         <div class="container header__container">
-            <a href="#" class="logo" >
-                <i class="fa-sharp fa-solid fa-shield-cat"></i>Cats
+            <a href="" class="logo" >
+                <i class="fa-sharp fa-solid fa-shield-cat"></i>Коты
             </a>
-            <button class="btn" id="add"><i class="fa-duotone fa-plus"></i>New Cat</button>
+            <button class="btn" id="add"><i class="fa-duotone fa-plus"></i>Новый кот</button>
+            <button class="btn" id="login">Войти</button>
         </div> 
     </header>
     <main class="main container">
         <section class="cards">
-          <h2 class="visually-hidden">Cats list</h2>
+          <h2 class="visually-hidden"></h2>
       </section>
       </main>
     <footer class="footer">
         <div class="container footer__container">
-            <span class="copyright">©Made by Nikita Z</span>
+            <span class="copyright">©Made by ainiy09</span>
             <div class="links">
                 <a href="" class="social_links"><i class="fa-brands fa-github"></i></a>
             </div>
@@ -36,7 +38,7 @@
     <div class="popup popup-add-cats">
         <div class="popup__container" >
             <button class="popup__close btn"><i class="fa-solid fa-xmark"></i></button>
-            <h2>Add pet</h2>
+            <h2>Новый кот</h2>
             <form class="form" id="popup-form-cat">
                 <div class="form__image"></div>
                 <input type="number" class="form__input" name="id" min="1" required placeholder="id">
@@ -46,25 +48,68 @@
                 <textarea name="description" class="form__input form__textarea" placeholder="Description"></textarea>
                 <label class="form__checkbox-wrap">
                     <input type="checkbox" name="favourite" class="form__checkbox " placeholder="">
-                    <span class="form__label">Favourite</span>  
+                    <span class="form__label">Избранный</span>  
                     <span class="form__fake-checkbox"><i class="fa-regular fa-circle-check"></i></span>
                 </label>
-                <input type="url" class="form__input form__input_image" name="img_link" placeholder="IMG link">
-                <button type="submit" class="form__btn btn">Add</button>
+                <input type="url" class="form__input form__input_image" name="image" placeholder="IMG link">
+                <button type="submit" class="form__btn btn">Добавить</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="popup popup-cat-info">
+        <div class="popup__container" >
+            <button class="popup__close btn popup__close_external"><i class="fa-solid fa-xmark"></i></button>
+           <div class="popup__content"></div>
+        </div>
+    </div>
+
+    <div class="popup popup-image">
+        <div class="popup__container" >
+            <button class="popup__close btn popup__close_external"><i class="fa-solid fa-xmark"></i></button>
+            <img src="" class="popup__image" alt="Изображение">
+        </div>
+    </div>
+
+    <div class="popup popup-login">
+        <div class="popup__container">
+            <button class="popup__close btn"><i class="fa-solid fa-xmark"></i></button>
+            <h2>Авторицазия</h2>
+            <form id="popup-form-login" class="form">
+                <input type="email" class="form__input" name="email" required placeholder="Login">
+                <input type="password" class="form__input" name="password" placeholder="Password">
+                <button type="submit" class="form__btn btn">Войти</button>
             </form>
         </div>
     </div>
     <template id="card-template">
         <div class="card">
           <img src="https://skazki.land/api/get-resized-image/kotik-012b2.jpg?width=1024&height=1024&fit=inside" alt="Изображение" class="card__image">
-          <a href="#" class="card__link"><h3 class="card__name">cat</h3></a>
+          <a href="#" class="card__link"><h3 class="card__name">Кот</h3></a>
           <button class="card__like" aria-label="Like"><i class="fa-solid fa-heart fa-2x"></i></button>
       </div>
       </template>
-    <script src="./script/cats.js" defer></script>
-    <script src="./script/api.js" defer></script>
-    <script src="./script/card.js" defer></script>
-    <script src="./script/popup.js" defer></script>
-    <script src="./script/index.js" defer></script>
+    
+    <template id="cats-info-template">
+        <div class="cat-info">
+            <button class="cat-info__edited"><i class="fa-regular fa-pen-to-square"></i>Редактировать</button>
+            <button class="cat-info__saved cat-info__saved_hidden"><i class="fa-regular fa-pen-to-square"></i>Сохранить</button>
+            <button class="cat-info__deleted"><i class="fa-solid fa-trash"></i>Удалить</button>
+
+            <img src="" class="cat-info__image" loading="lazy">
+            <span class="cat-info__id"></span>
+            <div class="cat-info__title">
+                <h2 class="cat-info__name"></h2>
+                <button class="cat-info__favourite"><i class="fa-solid fa-heart fa-2x"></i></button>
+            </div>
+            <span class="cat-info__rate"></span>
+            <div class="cat-info__age">
+                <span class="cat-info__age-val"></span>
+                <span class="cat-info__age-text"></span>
+            </div>
+            <p class="cat-info__desc"></p>
+        </div>
+    </template>
+    <script src="./script/index.js" defer type="module"></script>
 </body>
 </html>
