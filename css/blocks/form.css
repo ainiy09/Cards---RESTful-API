@@ -9,6 +9,8 @@
     background-image: url(/images/cat.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+    max-width: 173px;
+    max-height: 132px;
 }
 
 .form__textarea {
